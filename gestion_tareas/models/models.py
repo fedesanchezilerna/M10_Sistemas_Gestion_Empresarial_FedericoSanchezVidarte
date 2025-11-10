@@ -1,19 +1,27 @@
 # -*- coding: utf-8 -*-
+from odoo import models, fields, api
+#Definimos el modelo de datos
+class gestion_tareas(models.Model):
+    #Nombre y descripcion del modelo de datos
+    _name = 'gestion_tareas.gestion_tareas'
+    _description = 'gestion_tareas.gestion_tareas'
+    #Elementos de cada fila del modelo de datos
+    #Los tipos de datos a usar en el ORM son
+    # https://www.odoo.com/documentation/17.0/developer/reference/addons/orm.html#fields
+    tarea = fields.Char()
+    prioridad = fields.Integer()
+    urgente = fields.Boolean(compute="_value_urgente", store=True)
+    realizada = fields.Boolean()
 
-# from odoo import models, fields, api
+    #Este computo depende de la variable prioridad
+    @api.depends('prioridad')
+    #Funcion para calcular el valor de urgente
+    def _value_urgente(self):
+        #Para cada registro
+        for record in self:
+        #Si la prioridad es mayor que 10, se considera urgente, en otro caso no lo es
 
-
-# class gestion_tareas(models.Model):
-#     _name = 'gestion_tareas.gestion_tareas'
-#     _description = 'gestion_tareas.gestion_tareas'
-
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
-
+            if record.prioridad>10:
+                record.urgente = True
+            else:
+                record.urgente = False
