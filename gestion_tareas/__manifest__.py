@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Ejemplo02 - Gestión de Tareas",
+    'name': "gestion_tareas",
 
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 
