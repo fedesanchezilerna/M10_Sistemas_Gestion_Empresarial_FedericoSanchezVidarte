@@ -67,6 +67,7 @@ class SchoolEvent(models.Model):
 
     name = fields.Char(string='Event Name', required=True)
     date = fields.Datetime(string='Date', default=fields.Datetime.now)
+    class_id = fields.Many2one('school.class', string='Class')
     students_ids = fields.Many2many('school.student', string='Students')
     type = fields.Selection([
         ('absence', 'Absence'),
