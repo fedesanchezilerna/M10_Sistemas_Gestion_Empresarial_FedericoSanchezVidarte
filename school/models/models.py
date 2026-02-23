@@ -65,7 +65,6 @@ class SchoolEvent(models.Model):
     _description = 'School Event'
     _order = 'date desc'
 
-    name = fields.Char(string='Event Name', required=True)
     date = fields.Datetime(string='Date', default=fields.Datetime.now)
     class_id = fields.Many2one('school.class', string='Class')
     students_ids = fields.Many2many('school.student', string='Students')
@@ -76,5 +75,23 @@ class SchoolEvent(models.Model):
         ('behavior', 'Behavior')
     ], string='Event Type')
     description = fields.Text(string='Description')
+
+    @api.depends('type', 'class_id')
+    def _compute_display_name(self):
+        """Overrides display name to combine event type and class"""
+        for record in self:
+            event_type = dict(self._fields['type'].selection).get(record.type, 'Event')
+            class_name = record.class_id.name if record.class_id else 'No Class'
+            record.display_name = f"{event_type} - {class_name}"
+
+    def name_get(self):
+        """Returns a custom display name combining event type and class"""
+        result = []
+        for record in self:
+            event_type = dict(self._fields['type'].selection).get(record.type, 'Event')
+            class_name = record.class_id.name if record.class_id else 'No Class'
+            name = f"{event_type} - {class_name}"
+            result.append((record.id, name))
+        return result
 
 

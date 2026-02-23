@@ -1,22 +1,43 @@
 # -*- coding: utf-8 -*-
-# from odoo import http
+
+import os
+from odoo import http
+from odoo.http import request
 
 
-# class School(http.Controller):
-#     @http.route('/school/school', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
+class SchoolController(http.Controller):
 
-#     @http.route('/school/school/objects', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('school.listing', {
-#             'root': '/school/school',
-#             'objects': http.request.env['school.school'].search([]),
-#         })
-
-#     @http.route('/school/school/objects/<model("school.school"):obj>', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('school.object', {
-#             'object': obj
-#         })
+    @http.route('/school/events/', auth='public', type='http')
+    def list_events(self, **kw):
+        """Returns an HTML page with all school events using name_get"""
+        # Get events data
+        events = request.env['school.event'].sudo().search([])
+        event_names = events.name_get()
+        
+        # Build events HTML
+        if event_names:
+            events_html = ""
+            for event_id, name in event_names:
+                events_html += f"""
+                    <div class="event-item">
+                        <span class="event-text">{name}</span>
+                    </div>
+                """
+        else:
+            events_html = """
+                <div class="no-events">
+                    <p>📭 No events registered yet</p>
+                </div>
+            """
+        
+        # Read HTML template
+        template_path = os.path.join(os.path.dirname(__file__), '..', 'static', 'events.html')
+        with open(template_path, 'r', encoding='utf-8') as f:
+            html = f.read()
+        
+        # Replace placeholders
+        html = html.replace('{EVENT_COUNT}', str(len(event_names)))
+        html = html.replace('{EVENTS_HTML}', events_html)
+        
+        return html
 

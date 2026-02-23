@@ -101,7 +101,7 @@
       <field name="model">school.event</field>
       <field name="arch" type="xml">
         <list>
-          <field name="name"/>
+          <field name="display_name" string="Event"/>
           <field name="date"/>
           <field name="type"/>
           <field name="class_id"/>
@@ -117,7 +117,6 @@
           <sheet>
             <group>
               <group>
-                <field name="name"/>
                 <field name="date"/>
                 <field name="type"/>
               </group>
@@ -140,7 +139,6 @@
       <field name="model">school.event</field>
       <field name="arch" type="xml">
         <calendar string="School Events" date_start="date" color="type" mode="month">
-          <field name="name"/>
           <field name="type"/>
           <field name="class_id"/>
         </calendar>
@@ -153,7 +151,6 @@
       <field name="model">school.event</field>
       <field name="arch" type="xml">
         <search string="Search Events">
-          <field name="name"/>
           <field name="type"/>
           <field name="class_id"/>
           <separator/>
