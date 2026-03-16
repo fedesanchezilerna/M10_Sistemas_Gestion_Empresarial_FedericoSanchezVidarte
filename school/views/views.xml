@@ -189,7 +189,7 @@
     </record>
 
     <!-- Top menu -->
-    <menuitem name="School" id="menu_school_root"/>
+    <menuitem name="School" id="menu_school_root" web_icon="school,static/description/icon.png"/>
 
     <!-- Menu categories -->
     <menuitem name="Management" id="menu_school_management" parent="menu_school_root"/>
