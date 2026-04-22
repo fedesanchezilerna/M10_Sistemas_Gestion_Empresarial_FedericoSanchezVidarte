@@ -1,0 +1,282 @@
+# Spanish translation for the school module
+# Copyright (C) 2026
+# This file is distributed under the same license as the school package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-21 00:00+0000\n"
+"PO-Revision-Date: 2026-04-21 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: school
+#: model:ir.model,name:school.model_school_student
+msgid "School Student"
+msgstr "Alumno"
+
+#. module: school
+#: model:ir.model,name:school.model_school_class
+msgid "School Class"
+msgstr "Clase Escolar"
+
+#. module: school
+#: model:ir.model,name:school.model_school_event
+msgid "School Event"
+msgstr "Evento Escolar"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__last_name
+msgid "Last Name"
+msgstr "Apellido"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__birth_date
+msgid "Birth Date"
+msgstr "Fecha de Nacimiento"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__id_number
+msgid "ID Number"
+msgstr "Número de Identificación"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__age
+msgid "Age"
+msgstr "Edad"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__class_id
+#: model:ir.model.fields,field_description:school.field_school_event__class_id
+msgid "Class"
+msgstr "Clase"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__name
+msgid "Class Name"
+msgstr "Nombre de la Clase"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__grade
+msgid "Grade"
+msgstr "Curso"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__date_begin
+msgid "Start Date"
+msgstr "Fecha de Inicio"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__date_end
+msgid "End Date"
+msgstr "Fecha de Finalización"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__tutor_id
+msgid "Tutor"
+msgstr "Tutor"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__student_ids
+#: model:ir.model.fields,field_description:school.field_school_event__students_ids
+msgid "Students"
+msgstr "Alumnos"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__student_number
+msgid "Number of Students"
+msgstr "Número de Alumnos"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__description
+#: model:ir.model.fields,field_description:school.field_school_event__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_event__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_event__type
+msgid "Event Type"
+msgstr "Tipo de Evento"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_hr_employee__is_teacher
+msgid "Is Teacher"
+msgstr "Es Profesor"
+
+#. module: school
+#: selection:school.class,grade:first
+msgid "First"
+msgstr "Primero"
+
+#. module: school
+#: selection:school.class,grade:second
+msgid "Second"
+msgstr "Segundo"
+
+#. module: school
+#: selection:school.class,grade:third
+msgid "Third"
+msgstr "Tercero"
+
+#. module: school
+#: selection:school.class,grade:fourth
+msgid "Fourth"
+msgstr "Cuarto"
+
+#. module: school
+#: selection:school.event,type:absence
+msgid "Absence"
+msgstr "Ausencia"
+
+#. module: school
+#: selection:school.event,type:delay
+msgid "Delay"
+msgstr "Retraso"
+
+#. module: school
+#: selection:school.event,type:congratulations
+msgid "Congratulations"
+msgstr "Felicitación"
+
+#. module: school
+#: selection:school.event,type:behavior
+msgid "Behavior"
+msgstr "Comportamiento"
+
+#. module: school
+#: model:ir.ui.menu,name:school.menu_school_root
+msgid "School"
+msgstr "Escuela"
+
+#. module: school
+#: model:ir.ui.menu,name:school.menu_school_management
+msgid "Management"
+msgstr "Gestión"
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_student
+#: model:ir.ui.menu,name:school.menu_school_student
+msgid "Students"
+msgstr "Alumnos"
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_class
+#: model:ir.ui.menu,name:school.menu_school_class
+msgid "Classes"
+msgstr "Clases"
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_event
+#: model:ir.ui.menu,name:school.menu_school_event
+msgid "Events"
+msgstr "Eventos"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_event_calendar
+msgid "School Events"
+msgstr "Eventos Escolares"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_event_search
+msgid "Search Events"
+msgstr "Buscar Eventos"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_event_tree
+msgid "Event"
+msgstr "Evento"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_class_form
+msgid "Description"
+msgstr "Descripción"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_event_search
+msgid "Absences"
+msgstr "Ausencias"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_event_search
+msgid "Delays"
+msgstr "Retrasos"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_event_search
+msgid "By Class"
+msgstr "Por Clase"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_event_search
+msgid "By Type"
+msgstr "Por Tipo"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_event_search
+msgid "By Date"
+msgstr "Por Fecha"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_employee_form_inherit_school
+msgid "School"
+msgstr "Escuela"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_employee_search_inherit_school
+msgid "Profesores"
+msgstr "Profesores"
+
+#. module: school
+#: model:ir.module.category,name:school.module_school_category
+msgid "School"
+msgstr "Escuela"
+
+#. module: school
+#: model:res.groups,name:school.group_school_docente
+msgid "Docente"
+msgstr "Docente"
+
+#. module: school
+#: model:res.groups,name:school.group_school_director
+msgid "Director"
+msgstr "Director"
+
+#. module: school
+#: model:ir.rule,name:school.rule_hr_employee_readonly
+msgid "School: HR Employee Read Only"
+msgstr "Escuela: Empleado RRHH Solo Lectura"
+
+#. module: school
+#: sql_constraint:school.student:0
+msgid "The ID number must be unique"
+msgstr "El número de identificación debe ser único"
+
+#. module: school
+#: model:ir.module.module,shortdesc:school.module_school
+msgid "School Management"
+msgstr "Gestión Escolar"
+
+#. module: school
+#: model:ir.module.module,summary:school.module_school
+msgid "School Event Manager"
+msgstr "Gestor de Eventos Escolares"
