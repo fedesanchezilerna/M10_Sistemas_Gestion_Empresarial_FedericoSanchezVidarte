@@ -1,30 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-<!--
-          <record id="object0" model="school.school">
-            <field name="name">Object 0</field>
-            <field name="value">0</field>
-          </record>
 
-          <record id="object1" model="school.school">
-            <field name="name">Object 1</field>
-            <field name="value">10</field>
-          </record>
+        <!-- ODOO USERS -->
 
-          <record id="object2" model="school.school">
-            <field name="name">Object 2</field>
-            <field name="value">20</field>
-          </record>
+        <!-- Teacher User -->
+        <record id="demo_user_teacher" model="res.users">
+            <field name="name">Amandix Verdugix</field>
+            <field name="login">amandix.verdugix@school.demo</field>
+            <field name="groups_id" eval="[
+                (4, ref('base.group_user')),
+                (4, ref('school.group_school_docente'))
+            ]"/>
+        </record>
 
-          <record id="object3" model="school.school">
-            <field name="name">Object 3</field>
-            <field name="value">30</field>
-          </record>
+        <!-- Director User -->
+        <record id="demo_user_director" model="res.users">
+            <field name="name">Geraldaina Molaina</field>
+            <field name="login">geraldaina.molaina@school.demo</field>
+            <field name="groups_id" eval="[
+                (4, ref('base.group_user')),
+                (4, ref('school.group_school_director'))
+            ]"/>
+        </record>
 
-          <record id="object4" model="school.school">
-            <field name="name">Object 4</field>
-            <field name="value">40</field>
-          </record>
--->
+        <!-- HR EMPLOYEES -->
+
+        <!-- Employee: Teacher Amandix Verdugix -->
+        <record id="demo_employee_teacher" model="hr.employee">
+            <field name="name">Amandix Verdugix</field>
+            <field name="job_title">Teacher</field>
+            <field name="user_id" ref="demo_user_teacher"/>
+            <field name="is_teacher" eval="True"/>
+        </record>
+
+        <!-- Employee: Director Geraldaina Molaina -->
+        <record id="demo_employee_director" model="hr.employee">
+            <field name="name">Geraldaina Molaina</field>
+            <field name="job_title">School Director</field>
+            <field name="user_id" ref="demo_user_director"/>
+        </record>
+
+        <!-- CLASS -->
+
+        <record id="demo_class_1a" model="school.class">
+            <field name="name">1A - Science</field>
+            <field name="grade">first</field>
+            <field name="tutor_id" ref="demo_employee_teacher"/>
+            <field name="date_begin">2025-09-01</field>
+            <field name="date_end">2026-06-30</field>
+            <field name="description">First year science class, tutored by Amandix Verdugix.</field>
+        </record>
+
+        <!-- STUDENTS -->
+
+        <record id="demo_student_spongebob" model="school.student">
+            <field name="name">Sponge Bob</field>
+            <field name="last_name">Square Pants</field>
+            <field name="id_number">S001</field>
+            <field name="birth_date">2012-03-15</field>
+            <field name="class_id" ref="demo_class_1a"/>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="demo_student_patrick" model="school.student">
+            <field name="name">Patrick</field>
+            <field name="last_name">Star</field>
+            <field name="id_number">S002</field>
+            <field name="birth_date">2012-07-22</field>
+            <field name="class_id" ref="demo_class_1a"/>
+            <field name="active" eval="True"/>
+        </record>
+
+        <!-- EVENTS (registered by teacher Amandix Verdugix) -->
+
+        <!-- Event 1: Absence — Sponge Bob -->
+        <record id="demo_event_absence_spongebob" model="school.event">
+            <field name="date">2026-04-10 09:00:00</field>
+            <field name="class_id" ref="demo_class_1a"/>
+            <field name="students_ids" eval="[(4, ref('demo_student_spongebob'))]"/>
+            <field name="type">absence</field>
+            <field name="description">Absence of Sponge Bob. Registered by teacher Amandix Verdugix.</field>
+        </record>
+
+        <!-- Event 2: Congratulations — Patrick Star -->
+        <record id="demo_event_congratulations_patrick" model="school.event">
+            <field name="date">2026-04-15 10:30:00</field>
+            <field name="class_id" ref="demo_class_1a"/>
+            <field name="students_ids" eval="[(4, ref('demo_student_patrick'))]"/>
+            <field name="type">congratulations</field>
+            <field name="description">Patrick Star received outstanding marks in the science project. Registered by teacher Amandix Verdugix.</field>
+        </record>
+
     </data>
 </odoo>
