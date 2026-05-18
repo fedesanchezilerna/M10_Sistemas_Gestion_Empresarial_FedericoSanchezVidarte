@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Report Action -->
+        <record id="action_report_school_event" model="ir.actions.report">
+            <field name="name">Incident Report</field>
+            <field name="model">school.event</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">school.event_report_template</field>
+            <field name="report_file">school.event_report_template</field>
+            <field name="binding_model_id" ref="model_school_event"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- QWeb Template -->
+        <template id="event_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+
+                            <!-- Title -->
+                            <div class="row mb-4">
+                                <div class="col-12 text-center">
+                                    <h2>Incident Report</h2>
+                                </div>
+                            </div>
+
+                            <!-- Event Info -->
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <strong>Date:</strong>
+                                    <span t-field="doc.date" t-options='{"format": "dd/MM/yyyy HH:mm"}'/>
+                                </div>
+                                <div class="col-6">
+                                    <strong>Class:</strong>
+                                    <span t-field="doc.class_id"/>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <strong>Incident Type:</strong>
+                                    <span t-field="doc.type"/>
+                                </div>
+                                <div class="col-6">
+                                    <strong>Teacher:</strong>
+                                    <span t-esc="doc.class_id.tutor_id.name or 'Not assigned'"/>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <strong>Description:</strong>
+                                    <p t-field="doc.description" class="mt-1"/>
+                                </div>
+                            </div>
+
+                            <!-- Students Involved -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h4>Students Involved</h4>
+                                    <t t-if="doc.students_ids">
+                                        <table class="table table-bordered table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Last Name</th>
+                                                    <th>ID Number</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="doc.students_ids" t-as="student">
+                                                    <tr>
+                                                        <td t-esc="student_index + 1"/>
+                                                        <td t-esc="student.name"/>
+                                                        <td t-esc="student.last_name"/>
+                                                        <td t-esc="student.id_number"/>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </t>
+                                    <t t-else="">
+                                        <p>No students associated with this incident.</p>
+                                    </t>
+                                </div>
+                            </div>
+
+                            <!-- Signature Area -->
+                            <div class="row mt-5">
+                                <div class="col-6 text-center">
+                                    <p>___________________________</p>
+                                    <p>
+                                        <strong>Teacher Signature</strong><br/>
+                                        <span t-esc="doc.class_id.tutor_id.name or ''"/>
+                                    </p>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <p>___________________________</p>
+                                    <p><strong>Date and Stamp</strong></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
